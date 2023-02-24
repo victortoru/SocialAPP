@@ -165,6 +165,11 @@ public class NewPostFragment extends Fragment {
         galeria.launch("audio/*");
     }
     private void tomarFoto() {
+
+
+
+
+
         try {
             mediaUri = FileProvider.getUriForFile(requireContext(),
                     BuildConfig.APPLICATION_ID + ".fileprovider", File.createTempFile("img",

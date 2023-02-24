@@ -13,6 +13,7 @@ public class Post {
     public String mediaType;
     public Date date;
 
+    public String delete;
     // Constructor vacio requerido por Firestore
     public Post() {}
     public Map<String, Boolean> likes = new HashMap<>();
