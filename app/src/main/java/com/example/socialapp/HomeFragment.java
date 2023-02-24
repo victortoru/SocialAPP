@@ -19,7 +19,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -72,18 +71,8 @@ public class HomeFragment extends Fragment {
 
         @Override
         protected void onBindViewHolder(@NonNull PostViewHolder holder, int position, @NonNull final Post post) {
-            if(post.author == null){
-                holder.authorTextView.setText("Usuario");
-                Glide.with(requireView())
-                        .load(R.drawable.user)
-                        .transform(new CircleCrop())
-                        .into(holder.authorPhotoImageView);
-            }
-            else {
-                Glide.with(getContext()).load(post.authorPhotoUrl).circleCrop().into(holder.authorPhotoImageView);
-                holder.authorTextView.setText(post.author);
-            }
-
+            Glide.with(getContext()).load(post.authorPhotoUrl).circleCrop().into(holder.authorPhotoImageView);
+            holder.authorTextView.setText(post.author);
             holder.contentTextView.setText(post.content);
             SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm - dd MMM");
             String formattedDate = dateFormat.format(post.date);
@@ -102,14 +91,6 @@ public class HomeFragment extends Fragment {
                         .update("likes."+uid, post.likes.containsKey(uid) ?
                                 FieldValue.delete() : true);
             });
-
-            holder.deleteButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-
 
             // Miniatura de media
             if (post.mediaUrl != null) {
@@ -131,7 +112,7 @@ public class HomeFragment extends Fragment {
         }
 
         class PostViewHolder extends RecyclerView.ViewHolder {
-            ImageView authorPhotoImageView, likeImageView, mediaImageView, deleteButton;
+            ImageView authorPhotoImageView, likeImageView, mediaImageView;
             TextView authorTextView, contentTextView, numLikesTextView, timeTextView;
 
             PostViewHolder(@NonNull View itemView) {
@@ -144,7 +125,6 @@ public class HomeFragment extends Fragment {
                 numLikesTextView = itemView.findViewById(R.id.numLikesTextView);
                 mediaImageView = itemView.findViewById(R.id.mediaImage);
                 timeTextView = itemView.findViewById(R.id.timeTexView);
-                deleteButton = itemView.findViewById(R.id.deleteButton);
             }
 
         }
