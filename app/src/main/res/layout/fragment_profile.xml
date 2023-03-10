@@ -9,23 +9,63 @@
     tools:context="ProfileFragment">
 
     <ImageView
-        android:id="@+id/photoImageView"
-        android:layout_width="254dp"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/displayNameTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/emailTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/profile_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/profile" />
 
-        />
+    <TextView
+        android:id="@+id/profile_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profile_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Nombre de usuario" />
+
+    <TextView
+        android:id="@+id/profile_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profile_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:text="Correo electrónico" />
+
+    <TextView
+        android:id="@+id/profile_followers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profile_email"
+        android:layout_marginTop="16dp"
+        android:layout_alignParentStart="true"
+        android:text="0" />
+
+    <TextView
+        android:id="@+id/profile_following"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profile_email"
+        android:layout_marginTop="16dp"
+        android:layout_toEndOf="@+id/profile_followers"
+        android:text="120" />
+
+    <TextView
+        android:id="@+id/profile_likes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profile_email"
+        android:layout_marginTop="16dp"
+        android:layout_alignParentEnd="true"
+        android:text="Likes: 0" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/postsProfilesRecyclerView"
+        android:id="@+id/profile_posts_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        android:layout_below="@+id/profile_likes"
+        android:layout_marginTop="16dp"
+        android:scrollbars="vertical" />
 </LinearLayout>
