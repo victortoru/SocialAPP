@@ -62,10 +62,8 @@
         android:text="Likes: 0" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/profile_posts_list"
+        android:id="@+id/postsProfilesRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/profile_likes"
-        android:layout_marginTop="16dp"
-        android:scrollbars="vertical" />
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 </LinearLayout>

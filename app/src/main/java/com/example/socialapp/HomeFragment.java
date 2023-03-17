@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -78,8 +79,18 @@ public class HomeFragment extends Fragment {
 
         @Override
         protected void onBindViewHolder(@NonNull PostViewHolder holder, int position, @NonNull final Post post) {
-            Glide.with(getContext()).load(post.authorPhotoUrl).circleCrop().into(holder.authorPhotoImageView);
-            holder.authorTextView.setText(post.author);
+            if(post.author == null){
+                holder.authorTextView.setText("nombre");
+                Glide.with(requireView())
+                        .load(R.drawable.profile)
+                        .transform(new CircleCrop())
+                        .into(holder.authorPhotoImageView);
+            }
+
+            else {
+                Glide.with(getContext()).load(post.authorPhotoUrl).circleCrop().into(holder.authorPhotoImageView);
+                holder.authorTextView.setText(post.author);
+            }
             holder.contentTextView.setText(post.content);
             SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm - dd MMM");
             String formattedDate = dateFormat.format(post.date);

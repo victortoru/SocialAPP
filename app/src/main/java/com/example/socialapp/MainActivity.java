@@ -61,15 +61,10 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.home:
                         navController.navigate(R.id.homeFragment);
                         break;
-                    case R.id.search:
-                        navController.navigate(R.id.homeFragment);
-                        break;
-                    case R.id.profile:
+                    case R.id.perfil:
                         navController.navigate(R.id.profileFragment);
                         break;
-                    case R.id.settings:
-                        navController.navigate(R.id.homeFragment);
-                        break;
+
                 }
                 return true;
             }
